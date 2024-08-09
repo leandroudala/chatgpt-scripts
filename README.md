@@ -6,7 +6,7 @@ Para resolver isso, copie o comando abaixo e cole no DevTools* do navegador, na 
 // Este código perderá o efeito após o refresh da página
 // deverá ser copiado e colado no console
 (() => {
-    const cssWidthLimitator = '.md\\:max-w-3xl'; // classe css que limita o tamanho da largura no chatgpt
+    const cssWidthLimitator = 'max-w'; // conteúdo das classe css que limita o tamanho da largura no chatgpt
     // realizar busca em todos os stylesheets
     for (let h = 0; h < document.styleSheets.length; h++) {
         const stylesheet = document.styleSheets[h];
@@ -23,7 +23,7 @@ Para resolver isso, copie o comando abaixo e cole no DevTools* do navegador, na 
                 if (!(mediaRule instanceof CSSStyleRule)) {
                     continue;
                 }
-                if (mediaRule.selectorText === cssWidthLimitator) {
+                if (mediaRule.selectorText.indexOf(cssWidthLimitator) !== -1) {
                     mediaRule.style.maxWidth = '100%'; // agora max-width será 100%
                 }
             }
